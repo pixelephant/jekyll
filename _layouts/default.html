@@ -1,0 +1,41 @@
+
+  {% include header.html %}
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".na\
+v-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">{{ site.name }}</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>              
+                {% for p in site.pages | sort:weight %}                  
+                  {% unless p.url == '/index.html' %}
+                    <li>
+                      <a {% if p.url == page.url %}class="active"{% endif %} href="{{ p.url }}">
+                        {{ p.title }}
+                      </a>
+                    </li>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      {{ content }}
+
+    </div>
+
+  </body>
+   {% include footer.html %}
+</html>
